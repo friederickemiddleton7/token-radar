@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied launch value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#board">Skip to the board</a>
+
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="40" height="40" focusable="false">
+          <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/>
+          <circle cx="24" cy="24" r="13" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/>
+          <circle cx="24" cy="24" r="5"  fill="none" stroke="currentColor" stroke-width="2" opacity=".8"/>
+          <line x1="24" y1="24" x2="42" y2="10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="2.4" fill="currentColor"/>
+        </svg>
+      </span>
+      <div class="brand-text">
+        <h1>Token&nbsp;Radar</h1>
+        <p class="tagline">Protocols with no token yet, ranked by what a launch would be worth</p>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="chip chip-model"><i class="dot"></i><span id="modelVersion">model</span></span>
+      <span class="chip">snapshot <b id="asOf">—</b></span>
+      <span class="chip">watchlist floor <b id="floor">—</b></span>
+      <span class="chip">source <b id="source">—</b></span>
+    </div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="Board summary"></section>
+
+  <section class="panel model" id="modelPanel" aria-label="Value model">
+    <div class="panel-head">
+      <h2>How the board values a launch</h2>
+      <p class="panel-sub">One function scores every protocol, from the snapshot's own figures only. No name is special-cased.</p>
+    </div>
+    <p class="formula"><code>implied&nbsp;=&nbsp;TVL&nbsp;×&nbsp;multiple(TVL)&nbsp;×&nbsp;momentum(7d)&nbsp;×&nbsp;accrual(no-token&nbsp;age)</code></p>
+    <div class="terms" id="terms"></div>
+    <p class="model-note" id="modelNote"></p>
+  </section>
+
+  <section class="controls" id="controls" aria-label="Filters">
+    <div class="field grow">
+      <label for="search">Search</label>
+      <input id="search" type="search" placeholder="Name, slug, category or chain…" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="category">Category</label>
+      <select id="category"><option value="">All categories</option></select>
+    </div>
+    <div class="field">
+      <label for="chain">Chain</label>
+      <select id="chain"><option value="">All chains</option></select>
+    </div>
+    <div class="field">
+      <label for="sort">Sort by</label>
+      <select id="sort">
+        <option value="rank">Rank (implied value)</option>
+        <option value="tvl">TVL</option>
+        <option value="growth">7-day change</option>
+        <option value="age">Age with no token</option>
+        <option value="name">Name</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="dir">Direction</label>
+      <select id="dir"><option value="desc">High to low</option><option value="asc">Low to high</option></select>
+    </div>
+    <div class="field status-field">
+      <label id="statusLabel">View</label>
+      <div class="toggle" role="tablist" aria-labelledby="statusLabel">
+        <button class="toggle-btn is-active" id="tabPre" role="tab" aria-selected="true">Pre-token board</button>
+        <button class="toggle-btn" id="tabLive" role="tab" aria-selected="false">Live tokens</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel board-panel" aria-label="Ranked board">
+    <div class="panel-head row-head">
+      <h2 id="boardTitle">The board</h2>
+      <p class="panel-sub" id="boardCount">—</p>
+    </div>
+    <div class="table-wrap">
+      <table class="board" id="boardTable">
+        <thead id="boardHead"></thead>
+        <tbody id="boardBody"></tbody>
+      </table>
+    </div>
+    <p class="empty" id="boardEmpty" hidden>No protocol matches these filters. Widen the search or clear a filter.</p>
+  </section>
+
+  <footer class="foot">
+    <p><b>Reading this board.</b> <span id="footMethod"></span></p>
+    <p><b>Caveats.</b> A protocol that <i>records no token</i> may still have one the snapshot does not carry. The watchlist is the house's floor, never a ceiling: this board also ranks pre-token protocols below it. Implied value is this model's own claim from one sealed snapshot — it is not a price, a forecast that a token will launch, or an offer.</p>
+    <p class="foot-src" id="footSource"></p>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Protocol detail" hidden></aside>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
