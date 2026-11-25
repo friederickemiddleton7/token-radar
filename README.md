@@ -1,6 +1,10 @@
 # Token Radar
 
-A pre-token launch radar for the `token-radar-01` bounty. It reads a sealed snapshot of every
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/friederickemiddleton7/token-radar/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/friederickemiddleton7/token-radar/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+
+A pre-token launch radar for the [`token-radar-01`](https://make.fun/bounty/token-radar-01) bounty. It reads a sealed snapshot of every
 protocol DefiLlama tracks, finds the ones that still record no token and are not a wrapped, staked
 or bridged product of one that trades, and ranks them by what their launch would be worth — each
 with a concrete plan to farm it.
@@ -44,3 +48,7 @@ never ranked against the pre-token board.
 ## License
 
 MIT.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
